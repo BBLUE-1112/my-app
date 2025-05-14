@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ] # Replace with your branch (e.g., "master")
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # Replace with your Node.js version
+
+      # - name: Install Dependencies
+        # run: npm install
+
+      # - name: Run Tests
+        # run: npm test # Replace with your test command (e.g., "npm run test")
+
+  deploy:
+    # needs: build-and-test # Only deploy if tests pass
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DigitalOcean Droplet
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          script: |
+            cd /home/deploy/my-app/
+            git pull origin main
+            npm install --production
+            pm2 restart my-app
