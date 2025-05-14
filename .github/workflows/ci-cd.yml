@@ -1,39 +1,29 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline (Root User)
 
 on:
   push:
-    branches: [ main ] # Replace with your branch (e.g., "master")
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set Up Node.js
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Replace with your Node.js version
+          node-version: 22
 
-      # - name: Install Dependencies
-        # run: npm install
-
-      # - name: Run Tests
-        # run: npm test # Replace with your test command (e.g., "npm run test")
-
-  deploy:
-    # needs: build-and-test # Only deploy if tests pass
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to DigitalOcean Droplet
+      - name: Deploy to Droplet
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.DROPLET_IP }}
-          username: ${{ secrets.DROPLET_USER }}
+          username: root  # Using root directly
           key: ${{ secrets.DROPLET_SSH_KEY }}
           script: |
-            cd /home/deploy/my-app/
+            cd /home/deploy/my-app  # Your app path
             git pull origin main
-            npm install --production
+            npm install
             pm2 restart my-app
