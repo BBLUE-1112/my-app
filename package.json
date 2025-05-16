@@ -1,21 +1,37 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "main": "server.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start -p 8080",
+    "lint": "next lint"
   },
-  "repository": {
+  "dependencies": {
+    "axios": "^1.9.0",
+    "bootstrap": "^5.3.5",
+    "dompurify": "^3.2.5",
+    "gsap": "^3.13.0",
+    "next": "15.3.1",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-scroll": "^1.9.3",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.6"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.1"
+  },
+  "homepage": "https://github.com/BBLUE-1112/my-app#readme", "bugs": {
+    "url": "https://github.com/BBLUE-1112/my-app/issues"
+  },"repository": {
     "type": "git",
     "url": "git+https://github.com/BBLUE-1112/my-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BBLUE-1112/my-app/issues"
-  },
-  "homepage": "https://github.com/BBLUE-1112/my-app#readme",
-  "description": ""
+  }
 }
