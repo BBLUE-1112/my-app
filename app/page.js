@@ -134,7 +134,7 @@ const Home = async () => {
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-md-6 ps-md-5 order-2 order-md-1">
-              <p>Test</p>
+              <p>Test 2</p>
               <h1
                 dangerouslySetInnerHTML={{
                   __html: pageData.banner_title,
