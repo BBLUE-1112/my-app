@@ -26,4 +26,5 @@ jobs:
             cd /home/deploy/my-app  # Your app path
             git pull origin main
             npm install
+            npm build
             pm2 restart my-app
