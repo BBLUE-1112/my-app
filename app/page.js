@@ -50,8 +50,6 @@ const Home = async () => {
   const addressdata = await apiService.getacfData("acf/v1/options/");
   const addrsData = addressdata.address_list;
 
- 
-
   // const sectionRef = useRef(null);
   // const pinColumnRef = useRef(null);
   // const scrollColumnRef = useRef(null);
@@ -136,6 +134,7 @@ const Home = async () => {
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-md-6 ps-md-5 order-2 order-md-1">
+              <h1>Testing CI/CD</h1>
               <h1
                 dangerouslySetInnerHTML={{
                   __html: pageData.banner_title,
@@ -337,7 +336,7 @@ const Home = async () => {
 
       <section className="address_blk pad_cmn_blk">
         <div className="container">
-          <AddressTab  addressList= {addrsData}/>
+          <AddressTab addressList={addrsData} />
         </div>
       </section>
     </>
